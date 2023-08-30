@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>실패요</h1>
+	실패
 </body>
 </html>

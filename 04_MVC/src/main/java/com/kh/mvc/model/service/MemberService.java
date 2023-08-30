@@ -22,8 +22,8 @@ public class MemberService {
 		return dao.showAllMember();
 	}
 	
-	public List<Member> findMember(List<String> list) {
-		return dao.findMember(list);
+	public List<Member> findMember(String keyword) {
+		return dao.findMember(keyword);
 	}
 	
 	public Member login(Member vo) {
