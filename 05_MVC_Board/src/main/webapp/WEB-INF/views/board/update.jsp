@@ -11,6 +11,10 @@
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous" />
 <style>
+.container {
+	
+}
+
 h1 {
 	margin-top: 70px;
 }
@@ -22,16 +26,19 @@ h1 {
 </head>
 <body>
 	<div class="container">
-		<h1>게시글 등록</h1>
-		<form action="/board/insert" method="post" enctype="multipart/form-data">
+		<h1>게시글 수정</h1>
+		<form action="/board/update" method="post"
+			enctype="multipart/form-data">
+			<input type="hidden" name="no" value="${vo.no}" />
+			<input type="hidden" name="url" value="${vo.url}" />
 			<div class="form-group">
 				<label for="title">Title</label> <input type="text" name="title"
-					id="title" class="form-control" />
+					id="title" value="${vo.title}" class="form-control" />
 			</div>
 			<div class="form-group">
 				<label for="content">Content</label>
 				<textarea name="content" id="content" cols="30" rows="10"
-					class="form-control" style="resize: none"></textarea>
+					class="form-control" style="resize: none">${vo.content}</textarea>
 			</div>
 			<div class="form-group">
 				<label for="uploadFile">Add File</label> <input class="form-control"
@@ -39,9 +46,9 @@ h1 {
 			</div>
 			<div class="form-group">
 				<label for="writer">Writer</label> <input type="text" id="writer"
-					name="writer" class="form-control" />
+					readonly value="${vo.writer}" name="writer" class="form-control" />
 			</div>
-			<button type="submit" class="btn btn-outline-warning">등록</button>
+			<button type="submit" class="btn btn-outline-warning">수정</button>
 		</form>
 	</div>
 </body>
