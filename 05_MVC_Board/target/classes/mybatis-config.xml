@@ -7,7 +7,9 @@
 
 	<typeAliases>
 		<typeAlias type="com.kh.mvc.model.vo.Board" alias="Board" />
+		<typeAlias type="com.kh.mvc.model.vo.Member" alias="Member" />
 	</typeAliases>
+	
 
 	<!-- 단위 테스트를 위해서 추가 -->
 	<environments default="develop">
