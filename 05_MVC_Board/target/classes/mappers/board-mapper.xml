@@ -42,12 +42,4 @@
 		DELETE FROM board WHERE
 		no=#{no}
 	</delete>
-
-	<insert id="registerMember" parameterType="Member">
-		INSERT INTO member(id,
-		password, name, address)
-		VALUES(#{id}, #{password}, #{name},
-		#{address})
-	</insert>
-
 </mapper>

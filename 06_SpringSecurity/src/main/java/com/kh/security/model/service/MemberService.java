@@ -11,7 +11,7 @@ import com.kh.security.model.vo.Member;
 
 @Service
 public class MemberService implements UserDetailsService{
-
+	
 	@Autowired
 	private MemberDAO dao;
 	
@@ -23,9 +23,8 @@ public class MemberService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Member member = dao.getMemberById(username);
 		if(member==null) {
-			throw new UsernameNotFoundException("username " + username + " not found ");
+			throw new UsernameNotFoundException("username " + username + "not found");
 		}
 		return member;
 	}
-	
-}
+}  

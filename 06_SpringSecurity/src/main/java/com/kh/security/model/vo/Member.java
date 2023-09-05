@@ -10,15 +10,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import lombok.Data;
 
 @Data
-public class Member implements UserDetails {
-
+public class Member implements UserDetails{
+	
 	private String id;
 	private String password;
 	private String name;
 	private String address;
 	private String auth;
 	private int enabled;
-
+	
+	
 	// getAuthorities : 회원의 auth(role) 정보 getter
 	
 	@Override
@@ -27,30 +28,24 @@ public class Member implements UserDetails {
 		authList.add(new SimpleGrantedAuthority(auth));
 		return authList;
 	}
-
 	@Override
-	public String getUsername() {
+	public String getUsername() {		
 		return id;
 	}
-
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
-
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
-
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
-
 	@Override
 	public boolean isEnabled() {
 		return enabled == 1 ? true : false;
 	}
-
 }

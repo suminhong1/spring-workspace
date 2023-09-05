@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
 	<h1>모두 다 접근 가능한 페이지</h1>
 </body>
 </html>

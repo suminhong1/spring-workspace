@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <!DOCTYPE html>
 <html data-bs-theme="dark">
 <head>
@@ -23,7 +25,8 @@ h1 {
 <body>
 	<div class="container">
 		<h1>게시글 등록</h1>
-		<form action="/board/insert" method="post" enctype="multipart/form-data">
+		<form action="/board/insert" method="post"
+			enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="title">Title</label> <input type="text" name="title"
 					id="title" class="form-control" />
@@ -38,8 +41,9 @@ h1 {
 					type="file" id="uploadFile" name="uploadFile" accept="image/*" />
 			</div>
 			<div class="form-group">
-				<label for="writer">Writer</label> <input type="text" id="writer"
-					name="writer" class="form-control" />
+				<label for="writer">Writer</label> 
+				<input type="text" id="writer" name="writer" class="form-control" readonly 
+				value ="<sec:authentication property='principal.username'/>"/>
 			</div>
 			<button type="submit" class="btn btn-outline-warning">등록</button>
 		</form>

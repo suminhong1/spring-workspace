@@ -47,13 +47,22 @@ h1 {
 			<div class="form-group">
 				<label for="writer">Writer</label> <input type="text" id="writer"
 					readonly value="${vo.writer}" name="writer" class="form-control" />
-			</div>
 
-			<sec:authentication property="principal" var="info" />
-			<c:if test="${vo.writer eq info.username}">
-				<a class="btn btn-outline-warning" href="/board/update?no=${vo.no}">수정</a>
-				<a class="btn btn-outline-danger" href="/board/delete?no=${vo.no}">삭제</a>
-			</c:if>
+				<!-- 
+					principal : 계정정보를 가지고 있음! 만약에 로그인된 정보가 없으면 anonumousUser(문자열) 가 들어감
+					
+					* authrize : 권한부여와 관련된 것
+					* authentication : 인증과 관련된 것, 계정 정보
+					 -->
+			</div>
+			<sec:authorize access="hasRole('ROLE_MEMBER')">
+				<sec:authentication property="principal" var="info" />
+				<c:if test="${vo.writer eq info.username}">
+					<!-- login을하면 웹상 session에 남겨놔야함 그래야 로그인된 상태로 이런저런것을 할수있음 -->
+					<a class="btn btn-outline-warning" href="/board/update?no=${vo.no}">수정</a>
+					<a class="btn btn-outline-danger" href="/board/delete?no=${vo.no}">삭제</a>
+				</c:if>
+			</sec:authorize>
 		</form>
 	</div>
 </body>

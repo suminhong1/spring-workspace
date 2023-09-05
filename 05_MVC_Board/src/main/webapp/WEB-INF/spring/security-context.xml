@@ -7,35 +7,20 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<bean id="loginSuccess" class="com.kh.mvc.LoginSuccessHandler"/>
-	<bean id="customAccessDenied" class="com.kh.mvc.CustomAccessDeniedHandler"/>
-	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-	
+	<bean id="loginSuccess" class="com.kh.mvc.util.LoginSuccessHandler"/>
 	<context:component-scan base-package="com.kh.mvc"/>
 	<bean id="memberService" class="com.kh.mvc.model.service.MemberService"/>
 
 	<security:http>
-		<security:intercept-url pattern="/all"
-			access="permitAll" />
-		<security:intercept-url pattern="/member"
-			access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')" />
-		<security:intercept-url pattern="/admin"
-			access="hasRole('ROLE_ADMIN')" />
-		<security:form-login login-page="/login" authentication-success-handler-ref="loginSuccess"/>
-		
+		<security:intercept-url pattern="/board/list" access="permitAll"/>
+		<security:intercept-url pattern="/board/insert" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/board/update" access="hasRole('ROLE_MEMBER')"/>
 		<security:csrf disabled="true"/>
-		<security:logout logout-url="/logout" invalidate-session="true"/>
-		
-		<!-- <security:access-denied-handler error-page="/error"/> -->
-		<security:access-denied-handler ref="customAccessDenied"/>
+		<security:form-login login-page="/member/login" authentication-success-handler-ref="loginSuccess" />
 	</security:http>
 
 	<security:authentication-manager>
 		<security:authentication-provider user-service-ref="memberService">
-			<!-- <security:user-service>
-				<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER" />
-				<security:user name="admin" password="{noop}admin" authorities="ROLE_ADMIN" />
-			</security:user-service> -->
 			<security:password-encoder hash="bcrypt"/>
 		</security:authentication-provider>
 	</security:authentication-manager>

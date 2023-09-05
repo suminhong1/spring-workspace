@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
 
+@SuppressWarnings("serial")
 @Data
 public class Member implements UserDetails {
 
@@ -18,36 +19,40 @@ public class Member implements UserDetails {
 	private String address;
 	private String auth;
 	private int enabled;
-
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> authList = new ArrayList();
 		authList.add(new SimpleGrantedAuthority(auth));
 		return authList;
 	}
-
+	@Override
+	public String getPassword() {
+		return password;
+	}
 	@Override
 	public String getUsername() {
 		return id;
 	}
-
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
-
 	@Override
 	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
 		return true;
 	}
-
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
-
 	@Override
 	public boolean isEnabled() {
 		return enabled == 1 ? true : false;
 	}
+
+	// getAuthorities : 회원의 auth(role) 정보 getter
+	
+	
 }

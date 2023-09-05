@@ -17,10 +17,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		
-		List<String> roleList = new ArrayList();	
+		List<String> roleList = new ArrayList();		
+		
 		
 		authentication.getAuthorities().forEach(auth -> {
-			System.out.println("authentication  : " + auth);
+			System.out.println("auth : " + auth);
 			roleList.add(auth.getAuthority());
 		});
 		
@@ -28,14 +29,12 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 			response.sendRedirect("/member");
 			return;
 		}
-		
 		if(roleList.contains("ROLE_ADMIN")) {
 			response.sendRedirect("/admin");
 			return;
 		}
 		
 		response.sendRedirect("/all");
-		
 	}
 
 }

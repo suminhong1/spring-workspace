@@ -11,22 +11,22 @@ import com.kh.security.model.vo.Member;
 
 @Controller
 public class MemberController {
-	
+
 	@Autowired
 	private MemberService service;
 	
 	@Autowired
 	private BCryptPasswordEncoder bcpe;
-
+		
 	@GetMapping("/all")
 	public void all() {}
-
+	
 	@GetMapping("/member")
 	public void member() {}
-
+	
 	@GetMapping("/admin")
 	public void admin() {}
-
+	
 	@GetMapping("/login")
 	public void login() {}
 	
@@ -38,20 +38,23 @@ public class MemberController {
 	
 	@GetMapping("/register")
 	public void register() {}
-	
+		
 	@PostMapping("/register")
 	public String register(Member vo) {
 		
-		System.out.println("before password : " + vo.getPassword());
+		System.out.println("before password :"+vo.getPassword());
 		
-		// BcryptPasswordEncoder를 이용해서 암호화 처리
+		// BcrytPasswordEncoder를 이용해서 암호화 처리
 		String encodePassword = bcpe.encode(vo.getPassword());
-		System.out.println("after password : "  + encodePassword);
+		System.out.println("after password :"+ encodePassword);
 		
 		vo.setPassword(encodePassword);
 		
+		
 		service.registerMember(vo);
 		return "redirect:/login";
+		
 	}
+	
 	
 }
