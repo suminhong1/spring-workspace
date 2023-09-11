@@ -12,7 +12,7 @@
 	<h1>회원 관리 기능</h1>
 	
 	<ul>
-		<li><a href="search">회원검색</a>
+		<li><a href="search">회원검색</a></li>
 		<c:choose>
 			<c:when test="${empty vo}">
 				<li><a href="register">회원가입</a></li>

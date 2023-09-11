@@ -34,3 +34,9 @@ public class MemberService {
 		return dao.updateMember(vo);
 	}
 }
+
+
+
+
+
+

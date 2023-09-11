@@ -18,6 +18,12 @@ public class MemberDAO {
 		return sqlSession.insert("memberMapper.registerMember", vo);
 	}
 	
+	/*
+	 * showAllMember
+	 * findMember -> 파라미터 : String keyword, return : List<Member>
+	 * login -> 파라미터 : Member vo
+	 * updateMember -> 파라미터 : Member vo
+	 * */
 	public List<Member> showAllMember() {
 		return sqlSession.selectList("memberMapper.showAllMember");
 	}
@@ -31,14 +37,13 @@ public class MemberDAO {
 	}
 	
 	public int updateMember(Member vo) {
-		return sqlSession.insert("memberMapper.updateMember", vo);
+		return sqlSession.update("memberMapper.updateMember", vo);
 	}
 	
-	/*
-	 * showAllMember
-	 * findMember -> 파라미터 : String keyword, return : List<Member>
-	 * login -> 파리미터 : Member vo
-	 * updateMember -> 파라미터 : Member vo
-	 */
+	
+	
 	
 }
+
+
+
