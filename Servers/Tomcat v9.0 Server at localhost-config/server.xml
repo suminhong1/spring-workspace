@@ -162,7 +162,7 @@
 
       
       	
-      <Context docBase="D:\spring-workspace\05_MVC_Board\src\main\webapp\upload" path="/upload" reloadable="true"/><Context docBase="04" path="/" reloadable="true" source="org.eclipse.jst.jee.server:04"/></Host>
+      <Context docBase="D:\spring-workspace\05_MVC_Board\src\main\webapp\upload" path="/upload" reloadable="true"/><Context docBase="ncsTest1" path="/" reloadable="true" source="org.eclipse.jst.jee.server:ncsTest1"/></Host>
     </Engine>
   </Service>
 </Server>

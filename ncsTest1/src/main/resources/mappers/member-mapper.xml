@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<select resultMap="memberResultSet">
+	SELECT (id, pwd) FROM member (#{id},#{pwd})
+</select>
+
+<resultMap id="memberResultSet">
+	<bean memberId="id"/>
+	<bean memberPwd="pwd"/>
+	<bean memberName="name"/>
+</resultMap>
+
+
+
+private String memberId;
+
+	private String memberPwd;
+
+	private String memberName;
+
+	private Date memberEnrollDate;
+
+	
+	MEMBER_ID VARCHAR2(30) PRIMARY KEY,
+
+MEMBER_PWD VARCHAR2(100) NOT NULL,
+
+MEMBER_NM VARCHAR2(15) NOT NULL,
+
+MEMBER_ENROLL_DT DATE DEFAULT SYSDATE
+	
